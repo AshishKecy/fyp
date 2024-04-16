@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            margin-top: 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: normal;
+        }
+        .cart-item img {
+            max-width: 80px;
+            margin-right: 10px;
+        }
+        .quantity-input {
+            width: 50px;
+            text-align: center;
+        }
+        .delete-btn, .quantity-btn {
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+        .delete-btn {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            margin-right: 5px;
+        }
+        .delete-btn:hover {
+            background-color: #c82333;
+        }
+        .quantity-btn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            margin-left: 5px;
+        }
+        .quantity-btn:hover {
+            background-color: #0056b3;
+        }
+        .total-row {
+            font-weight: bold;
+        }
+        .action-btns {
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Shopping Cart</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="cart-item">
+                    <td><img src="product_image.jpg" alt="Product Image"></td>
+                    <td>
+                        <h3>Product Name</h3>
+                        <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </td>
+                    <td>$XX.XX</td>
+                    <td>
+                        <div class="action-btns">
+                            <button class="quantity-btn" onclick="decreaseQuantity(this)">-</button>
+                            <input type="number" class="quantity-input" value="1" readonly>
+                            <button class="quantity-btn" onclick="increaseQuantity(this)">+</button>
+                        </div>
+                    </td>
+                    <td>$XX.XX</td>
+                    <td>
+                        <button class="delete-btn">Delete</button>
+                    </td>
+                </tr>
+                <!-- Add more rows for additional products if needed -->
+            </tbody>
+        </table>
+        <div class="cart-total">
+            <p class="total-row">Total: $XX.XX</p>
+        </div>
+        <div class="proceed-to-checkout">
+            <button>Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <script>
+        function increaseQuantity(element) {
+            var input = element.parentNode.querySelector('.quantity-input');
+            var value = parseInt(input.value, 10);
+            input.value = isNaN(value) ? 1 : value + 1;
+        }
+
+        function decreaseQuantity(element) {
+            var input = element.parentNode.querySelector('.quantity-input');
+            var value = parseInt(input.value, 10);
+            input.value = isNaN(value) || value < 2 ? 1 : value - 1;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keratin Nepal</title>
+    <style>
+        /* Reset CSS*/
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Navbar styles*/
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+        }
+
+        .brand {
+            font-size: 20px;
+        }
+
+        .navbar-right {
+            display: flex;
+        }
+
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        /* Sidebar styles*/
+        .sidebar {
+            background-color: #f4f4f4;
+            width: 250px;
+            padding: 20px;
+        }
+
+        .category-title {
+            font-weight: bold;
+        }
+
+        .category-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .category-link {
+            color: #333;
+            text-decoration: none;
+            display: block;
+            padding: 5px 0;
+        }
+
+        .category-link.active {
+            font-weight: bold;
+        }
+
+        /* Main content styles*/
+        .content-container {
+            display: flex;
+            flex: 1;
+        }
+
+        /* Main content styles */
+        /* Main content styles */
+        /* Main content styles */
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+            max-height: calc(100vh - 150px);
+            /* Set a fixed height for the content area */
+            overflow-y: auto;
+            /* Enable vertical scrolling when content overflows */
+        }
+
+        .product-container {
+            width: calc(25% - 15px);
+            /* Adjusted width for each product container */
+            margin-right: 20px;
+            /* Gap between products */
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            box-sizing: border-box;
+            /* Include padding and border in the width calculation */
+            height: 250px;
+            /* Set a fixed height for each product container */
+            overflow: hidden;
+            /* Hide overflow content */
+        }
+
+        .product-container:nth-child(4n) {
+            margin-right: 0;
+            /* Remove margin from every fourth product container */
+        }
+
+
+
+
+        .product-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .quantity-select {
+            margin-top: 10px;
+        }
+
+        .quantity-select select {
+            width: 100%;
+            padding: 5px;
+        }
+
+        /* Adjust width for smaller screens */
+        @media (max-width: 768px) {
+            .product-container {
+                width: calc(50% - 10px);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .product-container {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-left">
+            <span class="brand">Keratin Nepal</span>
+        </div>
+        <div class="navbar-right">
+            <a href="#" class="nav-link">Home</a>
+            <a href="#" class="nav-link">Product</a>
+            <a href="#" class="nav-link">Add to Cart</a>
+            <a href="#" class="nav-link">Logout</a>
+        </div>
+    </nav>
+
+    <div class="content-container">
+        <div class="sidebar">
+            <div class="category">
+                <span class="category-title">Category</span>
+                <ul class="category-list">
+                    <li><a href="#" class="category-link active">All Products</a></li>
+                    <li><a href="#" class="category-link">Featured Products</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="product-container">
+                <img src="product1.jpg" alt="Product 1" class="product-image">
+                <div class="product-info">
+                    <span class="product-name">Product 1</span>
+                    <span class="product-price">$20</span>
+                    <div class="quantity-select">
+                        <select name="quantity">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <!-- Repeat the product container below -->
+            <div class="product-container">
+                <img src="product1.jpg" alt="Product 1" class="product-image">
+                <div class="product-info">
+                    <span class="product-name">Product 1</span>
+                    <span class="product-price">$20</span>
+                    <div class="quantity-select">
+                        <select name="quantity">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Product 2 content -->
+            </div>
+            <div class="product-container">
+                <img src="product1.jpg" alt="Product 1" class="product-image">
+                <div class="product-info">
+                    <span class="product-name">Product 1</span>
+                    <span class="product-price">$20</span>
+                    <div class="quantity-select">
+                        <select name="quantity">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Product 3 content -->
+            </div>
+            <div class="product-container">
+                <img src="product1.jpg" alt="Product 1" class="product-image">
+                <div class="product-info">
+                    <span class="product-name">Product 1</span>
+                    <span class="product-price">$20</span>
+                    <div class="quantity-select">
+                        <select name="quantity">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Product 4 content -->
+            </div>
+            <div class="product-container">
+                <img src="product1.jpg" alt="Product 1" class="product-image">
+                <div class="product-info">
+                    <span class="product-name">Product 1</span>
+                    <span class="product-price">$20</span>
+                    <div class="quantity-select">
+                        <select name="quantity">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Product 5 content -->
+            </div>
+            <div class="product-container">
+                <img src="product1.jpg" alt="Product 1" class="product-image">
+                <div class="product-info">
+                    <span class="product-name">Product 1</span>
+                    <span class="product-price">$20</span>
+                    <div class="quantity-select">
+                        <select name="quantity">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Product 6 content -->
+            </div>
+            <div class="product-container">
+                <img src="product1.jpg" alt="Product 1" class="product-image">
+                <div class="product-info">
+                    <span class="product-name">Product 1</span>
+                    <span class="product-price">$20</span>
+                    <div class="quantity-select">
+                        <select name="quantity">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Product 7 content -->
+            </div>
+            <div class="product-container">
+                <img src="product1.jpg" alt="Product 1" class="product-image">
+                <div class="product-info">
+                    <span class="product-name">Product 1</span>
+                    <span class="product-price">$20</span>
+                    <div class="quantity-select">
+                        <select name="quantity">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Product 8 content -->
+            </div>
+            <div class="product-container">
+                <img src="product1.jpg" alt="Product 1" class="product-image">
+                <div class="product-info">
+                    <span class="product-name">Product 1</span>
+                    <span class="product-price">$20</span>
+                    <div class="quantity-select">
+                        <select name="quantity">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Product 8 content -->
+            </div>
+            <div class="product-container">
+                <img src="product1.jpg" alt="Product 1" class="product-image">
+                <div class="product-info">
+                    <span class="product-name">Product 1</span>
+                    <span class="product-price">$20</span>
+                    <div class="quantity-select">
+                        <select name="quantity">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Product 8 content -->
+            </div>
+            <div class="product-container">
+                <img src="product1.jpg" alt="Product 1" class="product-image">
+                <div class="product-info">
+                    <span class="product-name">Product 1</span>
+                    <span class="product-price">$20</span>
+                    <div class="quantity-select">
+                        <select name="quantity">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Product 8 content -->
+            </div>
+            <div class="product-container">
+                <img src="product1.jpg" alt="Product 1" class="product-image">
+                <div class="product-info">
+                    <span class="product-name">Product 1</span>
+                    <span class="product-price">$20</span>
+                    <div class="quantity-select">
+                        <select name="quantity">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Product 8 content -->
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>

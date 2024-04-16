@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantity Input</title>
+    <style>
+        .number-input {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quantity {
+            width: 50px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        .minus,
+        .plus {
+            background-color: #f27121;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .minus:hover,
+        .plus:hover {
+            background-color: #e66500;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="number-input">
+        <button onclick="decrementQuantity()" class="minus">-</button>
+        <input class="quantity" id="quantity" min="1" name="quantity" value="1" type="number">
+        <button onclick="incrementQuantity()" class="plus">+</button>
+    </div>
+
+    <script>
+        function incrementQuantity() {
+            var quantityInput = document.getElementById('quantity');
+            var currentQuantity = parseInt(quantityInput.value, 10);
+            if (isNaN(currentQuantity)) {
+                currentQuantity = 0;
+            }
+            currentQuantity++;
+            quantityInput.value = currentQuantity;
+        }
+
+        function decrementQuantity() {
+            var quantityInput = document.getElementById('quantity');
+            var currentQuantity = parseInt(quantityInput.value, 10);
+            if (isNaN(currentQuantity)) {
+                currentQuantity = 0;
+            }
+            if (currentQuantity > 1) {
+                currentQuantity--;
+            }
+            quantityInput.value = currentQuantity;
+        }
+    </script>
+</body>
+
+</html>

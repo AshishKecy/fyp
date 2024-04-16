@@ -1,0 +1,83 @@
+<!-- Table structure with edit and delete buttons -->
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Example row -->
+        <tr>
+            <td>Keratin</td>
+            <td>Shampoo</td>
+            <td>Rs. 2000</td>
+            <td>12 pcs</td>
+            <td>
+                <!-- Edit and delete buttons -->
+                <button class="btn btn-primary edit-btn">Edit</button>
+                <button class="btn btn-danger delete-btn">Delete</button>
+            </td>
+        </tr>
+        <!-- Add more rows here -->
+    </tbody>
+</table>
+
+<!-- Edit panel (hidden by default) -->
+<div class="edit-panel" style="display: none;">
+    <input type="text" class="form-control" id="edit-name" placeholder="Name">
+    <input type="text" class="form-control" id="edit-category" placeholder="Category">
+    <input type="text" class="form-control" id="edit-price" placeholder="Price">
+    <input type="text" class="form-control" id="edit-quantity" placeholder="Quantity">
+    <button class="btn btn-success save-btn">Save</button>
+    <button class="btn btn-secondary cancel-btn">Cancel</button>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Handle click on edit button
+        $(".edit-btn").click(function () {
+            // Show edit panel and hide edit button
+            $(".edit-panel").show();
+            $(this).closest("tr").find("td").hide();
+        });
+
+        // Handle click on cancel button
+        $(".cancel-btn").click(function () {
+            // Hide edit panel and show table cells
+            $(".edit-panel").hide();
+            $(this).closest("tr").find("td").show();
+        });
+
+        // Handle click on save button
+        $(".save-btn").click(function () {
+            // Get edited values from input fields
+            var name = $("#edit-name").val();
+            var category = $("#edit-category").val();
+            var price = $("#edit-price").val();
+            var quantity = $("#edit-quantity").val();
+
+            // Update table cell values
+            $(this).closest("tr").find("td:eq(0)").text(name);
+            $(this).closest("tr").find("td:eq(1)").text(category);
+            $(this).closest("tr").find("td:eq(2)").text(price);
+            $(this).closest("tr").find("td:eq(3)").text(quantity);
+
+            // Hide edit panel and show table cells
+            $(".edit-panel").hide();
+            $(this).closest("tr").find("td").show();
+        });
+
+        // Handle click on delete button
+        $(".delete-btn").click(function () {
+            // Implement delete functionality here
+            // This could involve sending an AJAX request to delete the record from the database
+            // Then, remove the row from the table
+            $(this).closest("tr").remove();
+        });
+    });
+</script>

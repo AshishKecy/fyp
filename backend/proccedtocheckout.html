@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            margin-top: 0;
+        }
+        .payment-options {
+            margin-bottom: 20px;
+        }
+        .order-summary {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .checkout-form {
+            margin-bottom: 20px;
+        }
+        .checkout-form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .checkout-form input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        .checkout-form button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+        .checkout-form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Checkout</h2>
+
+        <div class="payment-options">
+            <h3>Select Payment Method</h3>
+            <input type="radio" id="khalti" name="payment_method" value="khalti" checked>
+            <label for="khalti">Khalti</label>
+            <br>
+            <input type="radio" id="cash-on-delivery" name="payment_method" value="cash">
+            <label for="cash-on-delivery">Cash on Delivery</label>
+        </div>
+
+        <div class="order-summary">
+            <h3>Order Summary</h3>
+            <!-- Display order details here -->
+        </div>
+
+        <form class="checkout-form">
+            <h3>Delivery Information</h3>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" required>
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone" name="phone" required>
+            <button type="submit">Place Order</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelector('.checkout-form').addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevent default form submission
+                
+                var paymentMethod = document.querySelector('input[name="payment_method"]:checked').value;
+
+                if (paymentMethod === 'cash') {
+                    alert('Your order has been recorded. You will pay upon delivery.');
+                    return;
+                }
+
+                // If payment method is Khalti, continue with Khalti payment
+                var formData = new FormData(this);
+
+                fetch('your_server_url', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (data) {
+                    window.location.href = data.payment_url;
+                })
+                .catch(function (error) {
+                    console.error('Error:', error);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

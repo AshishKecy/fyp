@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .admin-portal-spacing {
+            margin-top: 16px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+
+        .admin-portal {
+            display: inline-block;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <form class="signin-form" onsubmit="return validateForm()">
+            <h2>Admin Portal</h2>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="Admin Email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" placeholder="Admin Password" required>
+            </div>
+            <div class="error-message" id="errorMessage"></div>
+            <button type="submit">Sign In</button>
+            <div class="signup-link">
+                <a href="signin.html">Back</a>
+            </div>
+        </form>
+    </div>
+    <script src="../javascript/signup.js"></script>
+</body>
+
+</html>

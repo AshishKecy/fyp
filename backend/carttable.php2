@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .empty-cart {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .product-photo {
+            max-width: 100px;
+            height: auto;
+        }
+
+        .delete-btn {
+            background-color: #f44336;
+            color: white;
+            padding: 8px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .delete-btn:hover {
+            background-color: #d32f2f;
+        }
+
+        .checkout-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+        }
+
+        .checkout-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Shopping Cart</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>S.N</th>
+                    <th>Product Photo</th>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Sample Cart Item 1 -->
+                <tr>
+                    <td>1</td>
+                    <td><img src="sample_product_photo.jpg" alt="Product Photo" class="product-photo"></td>
+                    <td>Sample Product 1</td>
+                    <td>$10</td>
+                    <td><input type="number" value="2" min="1" max="10"></td>
+                    <td>$20</td>
+                    <td><button class="delete-btn">Delete</button></td>
+                </tr>
+                <!-- Sample Cart Item 2 -->
+                <tr>
+                    <td>2</td>
+                    <td><img src="sample_product_photo.jpg" alt="Product Photo" class="product-photo"></td>
+                    <td>Sample Product 2</td>
+                    <td>$15</td>
+                    <td><input type="number" value="1" min="1" max="10"></td>
+                    <td>$15</td>
+                    <td><button class="delete-btn">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="empty-cart">
+            Your cart is empty.
+        </div>
+        <a href="checkout.php" class="checkout-btn">Proceed to Checkout</a>
+
+        <button class="continue-shopping-btn">Continue Shopping</button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Function to update subtotal and total price
+            function updatePrices() {
+                var cartItems = document.querySelectorAll("tbody tr");
+                var totalPrice = 0;
+
+                cartItems.forEach(function (item) {
+                    var quantity = parseInt(item.querySelector("input").value);
+                    var price = parseFloat(item.querySelector("td:nth-child(4)").innerText.replace("$", ""));
+                    var subtotal = quantity * price;
+                    item.querySelector("td:nth-child(6)").innerText = "$" + subtotal.toFixed(2);
+                    totalPrice += subtotal;
+                });
+
+                document.querySelector(".checkout-btn").innerText = "Proceed to Checkout - Total: $" + totalPrice.toFixed(2);
+            }
+
+            // Add event listeners for quantity change
+            var quantityInputs = document.querySelectorAll("tbody tr input");
+            quantityInputs.forEach(function (input) {
+                input.addEventListener("change", updatePrices);
+            });
+
+            // Add event listener for remove item button
+            var removeButtons = document.querySelectorAll(".delete-btn");
+            removeButtons.forEach(function (button) {
+                button.addEventListener("click", function () {
+                    this.parentElement.parentElement.remove();
+                    updatePrices();
+                });
+            });
+
+            // Add event listener for continue shopping button
+            document.querySelector(".continue-shopping-btn").addEventListener("click", function () {
+                // Redirect to the main shop page
+                window.location.href = "shop.php";
+            });
+
+            // Initial price update
+            updatePrices();
+        });
+    </script>
+</body>
+
+</html>
